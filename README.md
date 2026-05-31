@@ -8,13 +8,23 @@ The GM tool for steering the living world: world events, faction directives, res
 can import the server's DB models/migrations directly (the schema contract — no drift); it
 writes authored content to PostgreSQL with a change flag the server reconciles.
 
-```sh
-# backend
-go run ./cmd/admin            # or: just run-admin   (serves :8090)
+## Prerequisites
 
-# frontend (dev)
-cd web && npm install && npm run dev   # or: just run-admin-web
+- Go 1.26+
+- Node.js + npm (frontend)
+- PostgreSQL — the same DB the server owns. Start it from the [`server`](../server) repo
+  (`just db-up`) or point `DATABASE_URL` at your own.
+
+## Getting started
+
+```sh
+just install     # go mod download + npm install (web/)
+just run         # backend, serves :8090   (env: ADMIN_ADDR)
+just run-web     # frontend dev server (Vite, hot reload) in another shell
 ```
 
-Layout: `cmd/admin` (backend entry), `internal/httpapi` (admin JSON API),
+`just build` compiles the backend and bundles the frontend to `web/dist`. Run `just` to list
+every recipe (`build`, `run`, `run-web`, `fmt`, `vet`).
+
+Layout: `cmd/admin` (backend entry), `internal/httpapi` (admin JSON API — planned),
 `web/` (Svelte SPA, built to `web/dist` and served by the backend).
