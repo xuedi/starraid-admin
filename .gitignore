@@ -3,3 +3,7 @@
 *.log
 web/node_modules/
 web/dist/
+
+# JetBrains IDEs (GoLand, IntelliJ, etc.)
+.idea/
+*.iml
