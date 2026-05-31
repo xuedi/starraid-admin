@@ -25,6 +25,11 @@ run:
 run-web:
     cd web && npm run dev
 
+# Seed the starting world into the DB (idempotent). Assumes the server already
+# ran `just db-up && just migrate`. Override the target via DATABASE_URL.
+seed:
+    go run ./cmd/seed
+
 # Format Go code
 fmt:
     go fmt ./...
