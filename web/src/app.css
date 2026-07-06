@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* DaisyUI v5, CSS-first config. Dark by default (a GM tool that lives on a dark
+   ops screen); a couple of alternates are available for a future theme toggle. */
+@plugin "daisyui" {
+  themes: dim --default, night, business, light;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+/* A faint starfield-ish backdrop so the console reads as part of the game. */
+body {
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, color-mix(in oklch, var(--color-base-content) 25%, transparent), transparent),
+    radial-gradient(1px 1px at 75% 60%, color-mix(in oklch, var(--color-base-content) 18%, transparent), transparent),
+    radial-gradient(1px 1px at 50% 85%, color-mix(in oklch, var(--color-base-content) 12%, transparent), transparent);
+  background-attachment: fixed;
+}
+
+/* Monospaced numerals for tabular data (coords, ids, counts). */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
